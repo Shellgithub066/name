@@ -15,6 +15,11 @@ connectDB();
 const port  = process.env.PORT || 5000; 
 const app = express();
 
+app.get('/' ,(req,res) => {
+    res.send('API is running...')
+});
+
+
 /*
 var iyzipay = new Iyzipay({
     apiKey: 'your api key',
@@ -30,8 +35,6 @@ app.use(express.urlencoded({extended: true}))
 
 
 
-
-
 app.use('/api/products',productRoutes);
 app.use('/api/users',userRoutes);
 app.use('/api/orders',orderRoutes);
@@ -44,6 +47,7 @@ app.get('/api/config/mastercard' , (req,res) =>res.send({
 const _dirname = path.resolve();
 app.use('/uploads' , express.static(path.join(_dirname, '/uploads')))
 
+/*
 if(process.env.Node_ENV === 'production'){
     app.use(express.static(path.join(__dirname , '/frontend/build')));
 
@@ -54,7 +58,10 @@ if(process.env.Node_ENV === 'production'){
     app.get('/' ,(req,res) => {
         res.send('API is running...')
     });
+    
+    
 }
+*/
 
 app.use(notFound)
 app.use(errorHandler)
